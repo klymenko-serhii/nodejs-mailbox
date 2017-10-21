@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web:
+    container_name: "nodejs-mailbox-app"
+    build: .
+    ports:
+      - "8081:8081"
+    links:
+      - mongodb
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app/
+  mongodb:
+    container_name: "nodejs-mailbox-db"
+    image: mongo:latest
+    ports:
+      - 27017:27017
+  mongo-seed:
+    container_name: "nodejs-mailbox-db-seed"
+    image: mongo:latest
+    links:
+      - mongodb
+    volumes: 
+      - ./seed:/seed
+    command:
+      'bash -c "mongoimport --host mongodb --type json --drop --file /seed/messages_sample.json --jsonArray --collection messages"'

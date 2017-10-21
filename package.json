@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-mailbox",
+  "version": "0.0.1",
+  "description": "NodeJS Mailbox Docker",
+  "author": "klymenko.serhii.s@gmail.com",
+  "main": "server.js",
+  "scripts": {
+    "start": "apidoc -i ./ -e node_modules/ -o apidoc/ && pm2-dev process.yml"
+  },
+  "dependencies": {
+    "apidoc": "^0.17.6",
+    "basic-auth": "^2.0.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.13.3",
+    "express-validator": "^4.2.1",
+    "mongoose": "^4.12.3",
+    "pm2": "^2.7.2"
+  }
+}
